@@ -21,13 +21,13 @@
   <body>
     <div class="container-fluid">
     	<div class='row'>
-			<ul id='messages'></ul>
+			<ul id="messages"></ul>
 		</div>
 		<div class='row'>
 			<form action="">
-					<div class="input-group mb-3">
-						<input id='m' type="text" class="form-control" placeholder="Message....."
-						  aria-label="Message....." aria-describedby="button-addon2"/>
+				<div class="input-group mb-3">
+					<input id="m" type="text" class="form-control" placeholder="Message....."
+					  aria-label="Message....." aria-describedby="button-addon2"/>
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" type="submit"
 							id="button-addon2">Send
@@ -54,11 +54,16 @@
     ></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      const socketClient = io.connect("http://localhost:3000");
-      socketClient.on("message", msgEventData => console.log(msgEventData));
-      socketClient.emit("anotherEvent", {
-        gray: "I am great thanks, how are you?"
-      });
+		const socketClient = io();
+	  	$('form').submit(() => {
+			socketClient.emit('message', $('#m').val());
+			$('#m').val('');
+			return false;
+		});
+    	// socketClient.on("message", msgEventData => console.log(msgEventData));
+    	// socketClient.emit("anotherEvent", {
+		// 	gray: "I am great thanks, how are you?"
+    	// });
     </script>
   </body>
 </html>

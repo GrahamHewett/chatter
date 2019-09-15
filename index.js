@@ -9,8 +9,13 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/index.html')
 })
 
-io.on('connection', (socket) => {
+io.on('connection', (socketServer) => {
 	console.log('user connected');
-	socket.emit('message', { boty: 'Hey!, How are you?' })
-	socket.on('anotherEvent', (data) => console.log(data))
+	socketServer.on('message', (msg) => {
+		console.log('message ' + msg);
+		socketServer.emit('message: ' + msg)
+	});
+
+	// socketServer.emit('message', { boty: 'Hey!, How are you?' })
+	// socketServer.on('anotherEvent', (data) => console.log(data))
 }) 
