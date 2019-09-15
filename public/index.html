@@ -60,6 +60,9 @@
 			$('#m').val('');
 			return false;
 		});
+		socketClient.on('message', (msg) => {
+			console.log('oi', msg);
+		});
     	// socketClient.on("message", msgEventData => console.log(msgEventData));
     	// socketClient.emit("anotherEvent", {
 		// 	gray: "I am great thanks, how are you?"
