@@ -1,0 +1,37 @@
+{
+  "name": "chatter",
+  "version": "1.0.0",
+  "description": "LinkedInLearing Tutorial Socket.io Chat",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/GrahamHewett/chatter.git"
+  },
+  "keywords": [
+    "socket",
+    "chat",
+    "real-time",
+    "node",
+    "express"
+  ],
+  "author": "Emmanuel Henri and Graham Hewett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrahamHewett/chatter/issues"
+  },
+  "homepage": "https://github.com/GrahamHewett/chatter#readme",
+  "dependencies": {
+    "express": "4.17.1",
+    "nodemon": "1.19.2",
+    "socket.io": "2.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-0": "6.24.1"
+  }
+}
