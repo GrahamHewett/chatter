@@ -7,6 +7,16 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	<script src='/socket.io/socket.io.js'></script>
+	<script>
+		const socketClient = io.connect('http://localhost:3000');
+		socketClient.on('message', 
+			(msgEventData) => console.log(msgEventData)
+		);
+		socketClient.emit('anotherEvent', 
+			{ gray: 'I am great thanks, how are you?'}
+		);
+
+	</script>
 </body>
 </html>
