@@ -13,7 +13,7 @@ io.on('connection', (socketServer) => {
 	console.log('user connected');
 	socketServer.on('message', (msg) => {
 		console.log('message ' + msg);
-		socketServer.emit('message: ' + msg)
+		socketServer.emit('message', msg)
 	});
 
 	// socketServer.emit('message', { boty: 'Hey!, How are you?' })
