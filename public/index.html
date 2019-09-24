@@ -22,20 +22,20 @@
 	</form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-		const socketClient = io();
+		const jsRoom = io('/javascript');
 		const m = document.getElementById('m')
 		const messages = document.getElementById('messages')
 		  
 		document.querySelector('form').addEventListener('submit', (e) => {
 			e.preventDefault()
-			socketClient.emit('message', m.value);
+			jsRoom.emit('message', m.value);
 		});
 
-		socketClient.on('connect', () => {
-			socketClient.emit('message', 'user connected');
+		jsRoom.on('connect', () => {
+			jsRoom.emit('message', 'user connected');
 		})
 		
-		socketClient.on('message', (msg) => {
+		jsRoom.on('message', (msg) => {
 			let listItem = document.createElement('li');
 			listItem.textContent = msg
 			messages.appendChild(listItem);

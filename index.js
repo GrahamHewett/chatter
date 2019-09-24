@@ -9,20 +9,20 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/index.html')
 })
 
+// javascript namespace
 const javascript = io.of('javascript');
-
 // const react = io.of('react')
 
-io.on('connection', (socketServer) => {
+javascript.on('connection', (socketServer) => {
 	console.log('user connected');
 	socketServer.on('message', (msg) => {
 		console.log('message ' + msg);
-		socketServer.emit('message', msg)
+		javascript.emit('message', msg)
 	});
 
 	socketServer.on('disconnect', () => {
 		console.log('user disconnected');
-		io.emit('message', 'user disconnected')
+		javascript.emit('message', 'user disconnected')
 	})
 
 	// socketServer.emit('message', { boty: 'Hey!, How are you?' })
