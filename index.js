@@ -9,6 +9,10 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/javascript", (req, res) => {
+	res.sendFile(__dirname + "/public/jsRoom.html");
+  });
+
 // javascript namespace
 const javascript = io.of("/javascript");
 // const react = io.of('react')

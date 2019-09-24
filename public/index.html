@@ -5,44 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<style>
-		form {padding: 20px; position: fixed; bottom: 0; width: 100%; padding-right: 50px;}
-		#messages {list-style-type: none; margin: 0; padding: 0; width:100%;}
-		#message li {padding: 5px 10px}
-		#message li:nth-child(odd) {background: #eee}
-	</style>
   </head>
   <body>
-	<ul id="messages"></ul>
-	<form action="">
-		<div>
-			<input id="msg-input" type="text" placeholder="Message....." aria-label="Message....."/>
-			<button type="submit">Send</button>
-		</div>
-	</form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-		const socket = io('/javascript');
-		const room = 'vanilla'
-		const msgInput = document.getElementById('msg-input');
-		let msgValue = msgInput.value;
-		const messages = document.getElementById('messages')
-		  
-		document.querySelector('form').addEventListener('submit', (e) => {
-			e.preventDefault()
-			msgValue = msgInput.value;
-			socket.emit('message', { msgValue, room });
-		});
-
-		socket.on('connect', () => {
-			socket.emit('join', { room });
-		})
-		
-		socket.on('message', (msg) => {
-			let listItem = document.createElement('li');
-			listItem.textContent = msg
-			messages.appendChild(listItem);
-		});		
-    </script>
+	<div>
+		<ul>
+			<a href='/javascript'>JavaScript</a >
+			<a href='#'>React</a >
+			<a href='#'>Node</a >
+		</ul>
+	</div>
   </body>
 </html>
