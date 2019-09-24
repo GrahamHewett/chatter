@@ -16,26 +16,29 @@
 	<ul id="messages"></ul>
 	<form action="">
 		<div>
-			<input id="m" type="text" placeholder="Message....." aria-label="Message....."/>
+			<input id="msg-input" type="text" placeholder="Message....." aria-label="Message....."/>
 			<button type="submit">Send</button>
 		</div>
 	</form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-		const jsRoom = io('/javascript');
-		const m = document.getElementById('m')
+		const socket = io('/javascript');
+		const room = 'vanilla'
+		const msgInput = document.getElementById('msg-input');
+		let msgValue = msgInput.value;
 		const messages = document.getElementById('messages')
 		  
 		document.querySelector('form').addEventListener('submit', (e) => {
 			e.preventDefault()
-			jsRoom.emit('message', m.value);
+			msgValue = msgInput.value;
+			socket.emit('message', { msgValue, room });
 		});
 
-		jsRoom.on('connect', () => {
-			jsRoom.emit('message', 'user connected');
+		socket.on('connect', () => {
+			socket.emit('join', { room });
 		})
 		
-		jsRoom.on('message', (msg) => {
+		socket.on('message', (msg) => {
 			let listItem = document.createElement('li');
 			listItem.textContent = msg
 			messages.appendChild(listItem);
