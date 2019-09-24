@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/public/index.html')
 })
 
+const javascript = io.of('javascript');
+
+// const react = io.of('react')
+
 io.on('connection', (socketServer) => {
 	console.log('user connected');
 	socketServer.on('message', (msg) => {
@@ -16,6 +20,12 @@ io.on('connection', (socketServer) => {
 		socketServer.emit('message', msg)
 	});
 
+	socketServer.on('disconnect', () => {
+		console.log('user disconnected');
+		io.emit('message', 'user disconnected')
+	})
+
 	// socketServer.emit('message', { boty: 'Hey!, How are you?' })
 	// socketServer.on('anotherEvent', (data) => console.log(data))
 }) 
+
